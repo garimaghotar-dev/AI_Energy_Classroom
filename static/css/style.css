@@ -1,0 +1,840 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f6;
+    color: #1f2937;
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    width: 420px;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: #e8f7ed;
+    font-size: 28px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    padding: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 15px;
+}
+
+button {
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #1f8f4c;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #18753d;
+}
+/* ============================= */
+/* CLASSROOM HOME                */
+/* ============================= */
+
+.dashboard-page {
+    min-height: 100vh;
+    display: flex;
+    background: #f4f7f6;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 10px;
+    margin-bottom: 45px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: #e8f7ed;
+
+    font-size: 20px;
+}
+
+.brand h2 {
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.brand span {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+
+/* Navigation */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    padding: 13px 14px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+    color: #6b7280;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: #e8f7ed;
+    color: #1f8f4c;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 10px;
+}
+
+.system-status {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.status-dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    margin-right: 6px;
+
+    border-radius: 50%;
+    background: #22c55e;
+}
+
+
+/* Main content */
+
+.main-content {
+    flex: 1;
+    padding: 42px 48px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #1f8f4c;
+
+    margin-bottom: 8px;
+}
+
+.page-header h1 {
+    text-align: left;
+    font-size: 32px;
+    margin-bottom: 7px;
+}
+
+.page-description {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.add-classroom-btn {
+    width: auto;
+
+    padding: 12px 20px;
+
+    background: #1f8f4c;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-weight: 600;
+}
+
+
+/* Summary */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+
+    margin-bottom: 40px;
+}
+
+.summary-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+}
+
+.summary-label {
+    display: block;
+
+    color: #6b7280;
+    font-size: 12px;
+
+    margin-bottom: 10px;
+}
+
+.summary-card strong {
+    font-size: 26px;
+}
+
+
+/* Classroom section */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    font-size: 19px;
+}
+
+.classroom-count {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+
+/* Classroom cards */
+
+.classroom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.classroom-card {
+    background: white;
+
+    padding: 24px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    transition: transform 0.2s ease;
+}
+
+.classroom-card:hover {
+    transform: translateY(-3px);
+}
+
+.classroom-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.classroom-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f0fdf4;
+    border-radius: 11px;
+}
+
+.online-badge,
+.offline-badge {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.online-badge {
+    color: #16a34a;
+}
+
+.offline-badge {
+    color: #9ca3af;
+}
+
+.classroom-card h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.classroom-location {
+    color: #6b7280;
+    font-size: 12px;
+
+    margin-bottom: 22px;
+}
+
+.classroom-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+
+    padding: 15px 0;
+    margin-bottom: 18px;
+}
+
+.classroom-stats span {
+    display: block;
+
+    color: #9ca3af;
+    font-size: 11px;
+
+    margin-bottom: 5px;
+}
+
+.classroom-stats strong {
+    font-size: 15px;
+}
+
+.open-btn {
+    width: 100%;
+
+    background: #f0fdf4;
+    color: #1f8f4c;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.open-btn:hover {
+    background: #e0f7e8;
+}
+/* ============================= */
+/* ADD CLASSROOM                 */
+/* ============================= */
+
+.form-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.form-header h1 {
+    text-align: left;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.classroom-form-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    font-size: 14px;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1f8f4c;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.cancel-btn {
+    padding: 12px 20px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+    color: #6b7280;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cancel-btn:hover {
+    background: #f3f4f6;
+}
+
+.save-btn {
+    width: auto;
+
+    padding: 12px 22px;
+
+    background: #1f8f4c;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+/* ============================= */
+/* CLASSROOM DASHBOARD            */
+/* ============================= */
+
+.classroom-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.back-link {
+    display: inline-block;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.back-link:hover {
+    color: #1f8f4c;
+}
+
+.classroom-dashboard-header h1 {
+    text-align: left;
+    font-size: 34px;
+    margin-bottom: 6px;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    background: #e8f7ed;
+    color: #1f8f4c;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: #22c55e;
+}
+
+
+/* Metrics */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.metric-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    background: white;
+
+    padding: 20px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.metric-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #f0fdf4;
+
+    font-size: 20px;
+}
+
+.metric-card span {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 11px;
+
+    margin-bottom: 5px;
+}
+
+.metric-card strong {
+    font-size: 21px;
+}
+
+
+/* Dashboard panels */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: 1.4fr 1fr;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.panel {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 24px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.panel-header p {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.camera-status {
+    color: #16a34a;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* Camera */
+
+.camera-placeholder {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f4f7f6;
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.camera-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.camera-placeholder h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.camera-placeholder p {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.detection-count {
+    margin-top: 20px;
+
+    padding: 9px 15px;
+
+    background: #e8f7ed;
+
+    color: #1f8f4c;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* Controls */
+
+.control-row {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 17px 0;
+
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.control-row:last-child {
+    border-bottom: none;
+}
+
+.control-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f4f7f6;
+
+    border-radius: 10px;
+}
+
+.control-info strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.control-info span {
+    display: block;
+    color: #9ca3af;
+    font-size: 11px;
+}
+
+.toggle {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #f3f4f6;
+
+    color: #9ca3af;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.toggle.active {
+    background: #e8f7ed;
+    color: #1f8f4c;
+}
+
+
+/* AI status */
+
+.ai-status-panel {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    background: white;
+
+    border: 1px solid #dcefe3;
+
+    border-radius: 16px;
+
+    padding: 22px 24px;
+}
+
+.ai-status-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f7ed;
+
+    color: #1f8f4c;
+
+    border-radius: 50%;
+
+    font-weight: 700;
+}
+
+.ai-status-panel h2 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.ai-status-panel p:not(.eyebrow) {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.ai-status-badge {
+    margin-left: auto;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    background: #e8f7ed;
+
+    color: #1f8f4c;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
