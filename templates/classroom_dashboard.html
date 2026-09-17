@@ -1,396 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>
-        Classroom Dashboard | AI Energy Saving Classroom
-    </title>
-
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ classroom.building }}-{{ classroom.room }} | AI Energy Classroom</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 </head>
-
 
 <body>
 
-<div class="dashboard-page">
+<div class="dashboard-layout">
 
     <!-- SIDEBAR -->
-
     <aside class="sidebar">
 
-        <div class="brand">
-
-            <div class="brand-icon">
-                ⚡
-            </div>
-
+        <div class="logo-area">
+            <div class="logo-icon">⚡</div>
             <div>
-                <h2>AI Energy</h2>
-                <span>Saving Classroom</span>
+                <h2>AI ENERGY</h2>
+                <span>CLASSROOM</span>
             </div>
-
         </div>
 
+        <nav class="sidebar-nav">
 
-        <nav>
-
-            <a href="/classrooms"
-               class="nav-item active">
-                🏫 Classrooms
+            <a href="{{ url_for('classrooms') }}" class="nav-item">
+                <span>▦</span>
+                Classrooms
             </a>
 
-            <a href="#"
-               class="nav-item">
-                ⚡ Energy
+            <a href="#" class="nav-item active">
+                <span>⌂</span>
+                Dashboard
             </a>
 
-            <a href="#"
-               class="nav-item">
-                📊 Analytics
+            <a href="#" class="nav-item">
+                <span>⚙</span>
+                Energy Controls
             </a>
 
-            <a href="#"
-               class="nav-item">
-                ⚙️ Settings
+            <a href="#" class="nav-item">
+                <span>◷</span>
+                Energy History
             </a>
 
         </nav>
 
-
         <div class="sidebar-bottom">
-
             <div class="system-status">
-
                 <span class="status-dot"></span>
-
                 System Online
-
             </div>
-
         </div>
 
     </aside>
 
 
-
     <!-- MAIN CONTENT -->
-
     <main class="main-content">
 
-
         <!-- HEADER -->
-
-        <header class="classroom-dashboard-header">
+        <header class="dashboard-header">
 
             <div>
-
-                <a href="/classrooms"
-                   class="back-link">
-                    ← Back to Classrooms
-                </a>
-
-                <p class="eyebrow">
-                    CLASSROOM MONITOR
-                </p>
+                <div class="breadcrumb">
+                    Classrooms / {{ classroom.building }}-{{ classroom.room }}
+                </div>
 
                 <h1>
                     {{ classroom.building }}-{{ classroom.room }}
                 </h1>
 
-                <p class="page-description">
-                    {{ classroom.building }} Block ·
-                    {{ classroom.floor }}
-                </p>
-
+                <p>{{ classroom.floor }} · Capacity {{ classroom.capacity }} students</p>
             </div>
 
-
-            <div class="live-status">
-
+            <div class="header-live">
                 <span class="live-dot"></span>
-
                 LIVE
-
             </div>
 
         </header>
 
 
-
-        <!-- TOP METRICS -->
-
+        <!-- METRICS -->
         <section class="metrics-grid">
 
-
             <div class="metric-card">
-
-                <div class="metric-icon">
-                    👥
+                <div class="metric-top">
+                    <span>👥</span>
+                    <small>OCCUPANCY</small>
                 </div>
 
-                <div>
+                <h2>{{ classroom.people }}</h2>
 
-                    <span>
-                        People Detected
-                    </span>
+                <p>
+                    People detected
+                </p>
 
-                    <strong>
-                        {{ classroom.people }}
-                    </strong>
-
+                <div class="progress-bar">
+                    <div
+    class="progress-fill"
+    style="width: {{ ((classroom.people / classroom.capacity) * 100) if classroom.capacity else 0 }}%;">
+</div>
                 </div>
 
+                <span class="metric-note">
+                    {{ classroom.capacity }} capacity
+                </span>
             </div>
 
 
-
             <div class="metric-card">
-
-                <div class="metric-icon">
-                    🌡️
+                <div class="metric-top">
+                    <span>🌡</span>
+                    <small>TEMPERATURE</small>
                 </div>
 
-                <div>
+                <h2>27<span class="unit">°C</span></h2>
 
-                    <span>
-                        Temperature
-                    </span>
+                <p>Current classroom temperature</p>
 
-                    <strong>
-                        27°C
-                    </strong>
-
-                </div>
-
+                <span class="metric-note neutral">
+                    Normal range
+                </span>
             </div>
 
 
-
             <div class="metric-card">
-
-                <div class="metric-icon">
-                    ⚡
+                <div class="metric-top">
+                    <span>⚡</span>
+                    <small>ENERGY USAGE</small>
                 </div>
 
-                <div>
+                <h2>{{ classroom.energy }}</h2>
 
-                    <span>
-                        Energy Usage
-                    </span>
+                <p>Current consumption</p>
 
-                    <strong>
-                        {{ classroom.energy }}
-                    </strong>
-
-                </div>
-
+                <span class="metric-note">
+                    ↓ 12% vs baseline
+                </span>
             </div>
 
 
-
-            <div class="metric-card">
-
-                <div class="metric-icon">
-                    💚
+            <div class="metric-card saving-card">
+                <div class="metric-top">
+                    <span>🌱</span>
+                    <small>ENERGY SAVED</small>
                 </div>
 
-                <div>
+                <h2>18<span class="unit">%</span></h2>
 
-                    <span>
-                        Energy Saved
-                    </span>
+                <p>Estimated energy saving</p>
 
-                    <strong>
-                        18%
-                    </strong>
-
-                </div>
-
+                <span class="metric-note">
+                    AI optimization active
+                </span>
             </div>
 
         </section>
 
 
-
-        <!-- MAIN DASHBOARD GRID -->
-
-        <section class="dashboard-grid">
-
+        <!-- CAMERA + AI STATUS -->
+        <section class="main-grid">
 
             <!-- CAMERA -->
-
             <div class="panel camera-panel">
 
                 <div class="panel-header">
-
                     <div>
-
-                        <h2>
-                            AI Camera
-                        </h2>
-
-                        <p>
-                            Real-time people detection
-                        </p>
-
+                        <h3>AI Camera</h3>
+                        <p>Real-time occupancy detection</p>
                     </div>
 
                     <span class="camera-status">
-                        ● Camera Online
+                        ● CAMERA ONLINE
                     </span>
-
                 </div>
 
+                <div class="camera-view">
 
-                <div class="camera-placeholder">
+                    <div class="camera-placeholder">
 
-                    <div class="camera-icon">
-                        📷
-                    </div>
+                        <div class="camera-icon">◉</div>
 
-                    <h3>
-                        Camera Feed
-                    </h3>
-
-                    <p>
-                        Raspberry Pi camera feed
-                        will appear here.
-                    </p>
-
-                    <div class="detection-count">
-
-                        👥
-
-                        {{ classroom.people }}
-
-                        people detected
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CONTROLS -->
-
-            <div class="panel controls-panel">
-
-                <div class="panel-header">
-
-                    <div>
-
-                        <h2>
-                            Energy Controls
-                        </h2>
+                        <h3>AI Camera Feed</h3>
 
                         <p>
-                            Current appliance status
+                            Raspberry Pi camera feed will appear here
                         </p>
 
+                        <div class="detection-count">
+                            <strong>{{ classroom.people }}</strong>
+                            people detected
+                        </div>
+
+                    </div>
+
+                    <div class="camera-overlay">
+                        <span>LIVE</span>
+                        <span>YOLO</span>
                     </div>
 
                 </div>
 
+            </div>
 
 
-                <div class="control-row">
+            <!-- AI STATUS -->
+            <div class="panel ai-panel">
 
-                    <div class="control-info">
+                <div class="panel-header">
+                    <div>
+                        <h3>AI Energy Decision</h3>
+                        <p>Automated energy optimization</p>
+                    </div>
+                </div>
 
-                        <div class="control-icon">
-                            💡
-                        </div>
+                <div class="ai-status-box">
 
-                        <div>
+                    <div class="ai-check">✓</div>
 
-                            <strong>
-                                Lights
-                            </strong>
-
-                            <span>
-                                Classroom lighting
-                            </span>
-
-                        </div>
-
+                    <div>
+                        <strong>Optimal Energy Usage</strong>
+                        <p>
+                            AI is actively optimizing classroom energy.
+                        </p>
                     </div>
 
+                </div>
+
+                <div class="decision-list">
+
+                    <div class="decision-row">
+                        <span>Occupancy</span>
+                        <strong>{{ classroom.people }} people</strong>
+                    </div>
+
+                    <div class="decision-row">
+                        <span>Energy Mode</span>
+                        <strong>Optimized</strong>
+                    </div>
+
+                    <div class="decision-row">
+                        <span>Saving Mode</span>
+                        <strong>ACTIVE</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ENERGY CONTROLS -->
+        <section class="panel controls-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h3>Energy Controls</h3>
+                    <p>Classroom appliances</p>
+                </div>
+
+                <span class="ai-control-label">
+                    AI CONTROL ENABLED
+                </span>
+
+            </div>
+
+
+            <div class="controls-grid">
+
+                <!-- LIGHTS -->
+                <div class="control-card">
+
+                    <div class="control-icon">💡</div>
+
+                    <div class="control-info">
+                        <h4>Lights</h4>
+                        <p>Classroom lighting</p>
+                    </div>
 
                     <div class="toggle active">
-                        ON
+                        <span></span>
                     </div>
+
+                    <strong class="on-text">ON</strong>
 
                 </div>
 
 
+                <!-- FANS -->
+                <div class="control-card">
 
-                <div class="control-row">
+                    <div class="control-icon">🌀</div>
 
                     <div class="control-info">
-
-                        <div class="control-icon">
-                            🌀
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Fans
-                            </strong>
-
-                            <span>
-                                Ceiling fans
-                            </span>
-
-                        </div>
-
+                        <h4>Fans</h4>
+                        <p>Ceiling fans</p>
                     </div>
-
 
                     <div class="toggle active">
-                        ON
+                        <span></span>
                     </div>
+
+                    <strong class="on-text">ON</strong>
 
                 </div>
 
 
+                <!-- AC -->
+                <div class="control-card">
 
-                <div class="control-row">
+                    <div class="control-icon">❄</div>
 
                     <div class="control-info">
-
-                        <div class="control-icon">
-                            ❄️
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                AC
-                            </strong>
-
-                            <span>
-                                Air conditioning
-                            </span>
-
-                        </div>
-
+                        <h4>Air Conditioning</h4>
+                        <p>Temperature control</p>
                     </div>
-
 
                     <div class="toggle">
-                        OFF
+                        <span></span>
                     </div>
+
+                    <strong class="off-text">OFF</strong>
 
                 </div>
 
@@ -399,46 +333,22 @@
         </section>
 
 
+        <!-- FOOTER INFO -->
+        <div class="dashboard-footer">
 
-        <!-- AI STATUS -->
+            <span>
+                Last updated: Just now
+            </span>
 
-        <section class="ai-status-panel">
+            <span>
+                AI Energy Classroom · Smart Energy Management
+            </span>
 
-            <div class="ai-status-icon">
-                ✓
-            </div>
-
-
-            <div>
-
-                <p class="eyebrow">
-                    AI ENERGY STATUS
-                </p>
-
-                <h2>
-                    Optimal Energy Usage
-                </h2>
-
-                <p>
-                    The classroom is occupied and
-                    energy systems are operating
-                    efficiently.
-                </p>
-
-            </div>
-
-
-            <div class="ai-status-badge">
-                OPTIMAL
-            </div>
-
-        </section>
-
+        </div>
 
     </main>
 
 </div>
 
 </body>
-
 </html>
